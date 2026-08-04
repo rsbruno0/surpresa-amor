@@ -769,7 +769,26 @@ async function checkEmptyGallery() {
         if (polaroids.length === 0) {
             emptyGalleryMsg.style.display = 'block';
             
-            // Pré-popula com a linda ilustração padrão de casal gerada
+            // 1. Tenta pré-popular com o mural.json (backup de fotos do usuário)
+            try {
+                const res = await fetch('mural.json');
+                if (res.ok) {
+                    const parsedData = await res.json();
+                    if (parsedData && Array.isArray(parsedData.polaroids) && parsedData.polaroids.length > 0) {
+                        for (const p of parsedData.polaroids) {
+                            delete p.id;
+                            await savePolaroid(p);
+                        }
+                        emptyGalleryMsg.style.display = 'none';
+                        await renderAllPolaroids();
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.log("mural.json não encontrado ou erro ao importar. Usando ilustração padrão:", err);
+            }
+            
+            // 2. Fallback: Pré-popula com a linda ilustração padrão de casal gerada
             fetch('default-photo.png')
                 .then(res => {
                     if (!res.ok) throw new Error("Sem foto padrão");
