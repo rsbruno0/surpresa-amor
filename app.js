@@ -766,19 +766,23 @@ function setupPolaroidEvents(item, polaroidData) {
 async function checkEmptyGallery() {
     try {
         const polaroids = await getAllPolaroids();
-        if (polaroids.length === 0) {
-            emptyGalleryMsg.style.display = 'block';
-            
-            // 1. Tenta pré-popular com o mural.json (backup de fotos do usuário)
+        const muralLoaded = localStorage.getItem("mural_loaded");
+        
+        // Se ainda não carregou o mural.json nesta origem/navegador, força o carregamento das fotos do usuário
+        if (muralLoaded !== "true") {
             try {
                 const res = await fetch('mural.json');
                 if (res.ok) {
                     const parsedData = await res.json();
                     if (parsedData && Array.isArray(parsedData.polaroids) && parsedData.polaroids.length > 0) {
+                        // Limpa o banco para remover qualquer imagem default/resíduo
+                        await clearAllPolaroidsFromDB();
+                        
                         for (const p of parsedData.polaroids) {
                             delete p.id;
                             await savePolaroid(p);
                         }
+                        localStorage.setItem("mural_loaded", "true");
                         emptyGalleryMsg.style.display = 'none';
                         await renderAllPolaroids();
                         return;
@@ -787,8 +791,12 @@ async function checkEmptyGallery() {
             } catch (err) {
                 console.log("mural.json não encontrado ou erro ao importar. Usando ilustração padrão:", err);
             }
+        }
+        
+        // Fallback: Se o banco estiver zerado (e sem mural.json), mostra mensagem vazia e carrega ilustração padrão
+        if (polaroids.length === 0) {
+            emptyGalleryMsg.style.display = 'block';
             
-            // 2. Fallback: Pré-popula com a linda ilustração padrão de casal gerada
             fetch('default-photo.png')
                 .then(res => {
                     if (!res.ok) throw new Error("Sem foto padrão");
