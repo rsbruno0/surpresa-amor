@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor ❤️ | Uma Surpresa Especial</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@300;400;500;600;700;800&family=Playpen+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome para ícones premium -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilo Principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-blush">
+    <!-- Canvas para chuva de corações física -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Cabeçalho Utilitário (Música Rápida e Engrenagem de Configuração) -->
+    <header class="app-header">
+        <button id="quick-music-btn" class="header-btn" title="Tocar/Pausar Música">
+            <i class="fa-solid fa-music"></i>
+            <span class="music-wave-indicator">
+                <span></span><span></span><span></span><span></span>
+            </span>
+        </button>
+        <button id="config-btn" class="header-btn" title="Configurações e Personalização">
+            <i class="fa-solid fa-gear"></i>
+        </button>
+    </header>
+
+    <!-- Tela do Envelope Principal -->
+    <main class="main-container" id="main-view">
+        <div class="envelope-scene" id="envelope-scene">
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope-back"></div>
+                <!-- Carta interna que sobe -->
+                <div class="envelope-paper" id="envelope-paper">
+                    <div class="paper-preview">
+                        <span class="preview-title">De: <span id="preview-from">Bruno Santos Santana</span></span>
+                        <span class="preview-subtitle">Para: <span id="preview-to">Maria Eduarda De Oliveira Gonçalves</span></span>
+                        <div class="preview-divider"></div>
+                        <p class="preview-excerpt">Clique para abrir meu coração...</p>
+                    </div>
+                </div>
+                <div class="envelope-front"></div>
+                <!-- Aba superior do envelope -->
+                <div class="envelope-top"></div>
+                <!-- Lacre de cera interativo -->
+                <div class="wax-seal" id="wax-seal">
+                    <div class="wax-heart">❤️</div>
+                </div>
+            </div>
+            <div class="open-instruction" id="instruction-text">
+                Toque no lacre para abrir sua surpresa ✨
+            </div>
+        </div>
+
+        <!-- O Cartão Revelado (Sistema de Abas) -->
+        <section class="card-container" id="love-card">
+            <!-- Abas Superiores -->
+            <nav class="card-tabs">
+                <button class="tab-btn active" data-tab="tab-letter" id="tab-btn-letter">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <span>Carta</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-gallery" id="tab-btn-gallery">
+                    <i class="fa-solid fa-images"></i>
+                    <span>Lembranças</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-music" id="tab-btn-music">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <span>Trilha</span>
+                </button>
+            </nav>
+
+            <!-- Conteúdo das Abas -->
+            <div class="card-content">
+                <!-- Aba 1: Carta de Amor -->
+                <article class="tab-pane active" id="tab-letter">
+                    <div class="letter-scroll-pane">
+                        <div class="letter-decorations">
+                            <span class="decor-heart-top">❤️</span>
+                            <span class="decor-heart-bottom">❤️</span>
+                        </div>
+                         <div class="letter-body">
+                            <p class="letter-header">Querida(o) <span class="destinatario-text">Maria Eduarda De Oliveira Gonçalves</span>,</p>
+                            <div class="letter-text-content" id="customized-letter-text">
+                                Para o meu amor,<br><br>
+                                Você é a minha linha de código favorita, a melhor parte do meu dia e a constante que dá sentido à minha vida. Ao seu lado, todos os bugs da rotina se resolvem e a minha vida ganha o design mais bonito.<br><br>
+                                Amo você além das estrelas e de qualquer linha do infinito! ❤️
+                            </div>
+                            <p class="letter-signature">Com todo o meu amor,<br><span class="remetente-text">Bruno Santos Santana</span></p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Aba 2: Mural de Fotos Polaroid -->
+                <article class="tab-pane" id="tab-gallery">
+                    <div class="gallery-wrapper">
+                        <div class="gallery-controls">
+                            <div class="control-actions">
+                                <label for="upload-photo" class="gallery-btn primary" title="Adicionar Foto">
+                                    <i class="fa-solid fa-plus"></i> Adicionar Foto
+                                </label>
+                                <input type="file" id="upload-photo" accept="image/*" style="display: none;">
+                                
+                                <button id="export-btn" class="gallery-btn secondary" title="Salvar Álbum (.love)">
+                                    <i class="fa-solid fa-download"></i> Exportar Mural
+                                </button>
+                                <label for="import-photo" class="gallery-btn secondary" title="Carregar Álbum (.love)">
+                                    <i class="fa-solid fa-upload"></i> Importar Mural
+                                </label>
+                                <input type="file" id="import-photo" accept=".love" style="display: none;">
+                            </div>
+                            <span class="gallery-tip"><i class="fa-solid fa-info-circle"></i> Arraste as fotos para organizar. Dê dois cliques para focar!</span>
+                        </div>
+                        
+                        <!-- Mesa do mural onde as fotos serão espalhadas -->
+                        <div class="polaroid-table" id="polaroid-table">
+                            <!-- Polaroids dinâmicas serão inseridas aqui via JS -->
+                            <div class="empty-gallery-msg" id="empty-gallery-msg">
+                                <i class="fa-regular fa-image"></i>
+                                <p>Nenhuma foto adicionada ainda. Clique em <strong>Adicionar Foto</strong> para espalhar suas memórias favoritas aqui!</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Aba 3: Player de Música Romântica -->
+                <article class="tab-pane" id="tab-music">
+                    <div class="music-player-container">
+                        <div class="vinyl-record-wrapper">
+                            <div class="vinyl-record" id="vinyl-disc">
+                                <div class="vinyl-center">
+                                    <div class="vinyl-photo-placeholder">❤️</div>
+                                </div>
+                            </div>
+                            <div class="tonearm" id="vinyl-tonearm"></div>
+                        </div>
+                        
+                        <div class="music-info">
+                            <h3 id="track-title">Trilha Sonora de Amor</h3>
+                            <p id="track-artist">Lofi & Romance</p>
+                        </div>
+
+                        <!-- Mini Controles de Trilha -->
+                        <div class="track-selector">
+                            <button class="track-option active" data-track="1">
+                                <i class="fa-solid fa-music"></i> Black Alien
+                            </button>
+                            <button class="track-option" data-track="2">
+                                <i class="fa-solid fa-feather"></i> Satie
+                            </button>
+                            <button class="track-option" data-track="3">
+                                <i class="fa-solid fa-heart"></i> Chopin
+                            </button>
+                            <button class="track-option" id="track-option-custom" data-track="custom" style="display: none;">
+                                <i class="fa-solid fa-music"></i> Customizada
+                            </button>
+                        </div>
+
+                        <!-- Controles de Reprodução -->
+                        <div class="player-controls">
+                            <!-- Slider de Progresso -->
+                            <div class="progress-bar-container">
+                                <span class="time-display" id="time-current">0:00</span>
+                                <input type="range" id="progress-slider" min="0" max="100" value="0" class="player-slider">
+                                <span class="time-display" id="time-total">0:00</span>
+                            </div>
+
+                            <div class="main-buttons">
+                                <button id="prev-track" class="ctrl-btn" title="Anterior"><i class="fa-solid fa-backward-step"></i></button>
+                                <button id="play-pause-btn" class="ctrl-btn play-btn" title="Tocar/Pausar"><i class="fa-solid fa-play"></i></button>
+                                <button id="next-track" class="ctrl-btn" title="Próxima"><i class="fa-solid fa-forward-step"></i></button>
+                            </div>
+
+                            <!-- Controle de Volume -->
+                            <div class="volume-container">
+                                <i class="fa-solid fa-volume-low" id="volume-icon"></i>
+                                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.25" class="player-slider">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Gaveta de Configuração Lateral (Drawer) -->
+    <aside class="config-drawer" id="config-drawer">
+        <div class="drawer-header">
+            <h3>Personalizar Cartão</h3>
+            <button id="close-config-btn" class="close-btn">&times;</button>
+        </div>
+        <div class="drawer-content">
+            <div class="form-group">
+                <label for="cfg-from"><i class="fa-solid fa-pen-nib"></i> Seu Nome (Remetente):</label>
+                <input type="text" id="cfg-from" placeholder="Seu nome" value="Bruno Santos Santana">
+            </div>
+            <div class="form-group">
+                <label for="cfg-to"><i class="fa-solid fa-heart"></i> Nome Dela/Dele (Destinatário):</label>
+                <input type="text" id="cfg-to" placeholder="Nome do seu amor" value="Maria Eduarda De Oliveira Gonçalves">
+            </div>
+            <div class="form-group">
+                <label for="cfg-letter"><i class="fa-solid fa-font"></i> Mensagem da Carta:</label>
+                <textarea id="cfg-letter" rows="8" placeholder="Escreva sua mensagem personalizada aqui..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cfg-music-url"><i class="fa-solid fa-music"></i> Link da Música (.mp3):</label>
+                <input type="text" id="cfg-music-url" placeholder="https://exemplo.com/sua-musica.mp3">
+            </div>
+            <div class="form-group">
+                <label><i class="fa-solid fa-palette"></i> Escolha o Tema Visual:</label>
+                <div class="theme-picker">
+                    <button class="theme-select-btn active blush" data-theme="theme-blush" title="Pastel Blush">
+                        <span></span>
+                    </button>
+                    <button class="theme-select-btn midnight" data-theme="theme-midnight" title="Midnight Neon">
+                        <span></span>
+                    </button>
+                    <button class="theme-select-btn sunset" data-theme="theme-sunset" title="Golden Sunset">
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="drawer-divider"></div>
+
+            <button id="generate-link-btn" class="drawer-action-btn">
+                <i class="fa-solid fa-share-nodes"></i> Copiar Link Personalizado
+            </button>
+            <p class="drawer-note">
+                O link gerado conterá seus nomes e sua mensagem de amor. Você pode enviá-lo para ela/ele abrir!
+            </p>
+        </div>
+    </aside>
+
+    <!-- Modal de Visualização de Polaroid (Zoom / Foco) -->
+    <div class="zoom-modal" id="zoom-modal">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <div class="modal-content">
+            <div class="zoom-polaroid">
+                <img id="zoom-img" src="" alt="Polaroid em foco">
+                <div class="zoom-caption">
+                    <p id="zoom-text"></p>
+                    <span id="zoom-date"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elemento de áudio real do HTML5 (invisível) -->
+    <audio id="bg-audio" loop></audio>
+
+    <!-- Script Principal -->
+    <script src="app.js"></script>
+</body>
+</html>
