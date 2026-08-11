@@ -23,8 +23,8 @@ Amo você além das estrelas e de qualquer linha do infinito! ❤️`,
 
 // Tracks Românticas (Utiliza SoundHelix como links estáveis, e Synth procedural como Fallback)
 const tracks = [
-    { id: 1, title: "Vai Baby (Black Alien)", artist: "Abaixo de Zero: Hello Hell", url: "vai-baby.mp3" },
-    { id: 2, title: "Gymnopédie No. 1 (Erik Satie)", artist: "Melancólico & Suave", url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" },
+    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "vai-baby.mp3" },
+    { id: 2, title: "Gymnopédie No. 1 (Erik Satie)", artist: "Melâncólico & Suave", url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" },
     { id: 3, title: "Nocturne Op. 9 No. 2 (Chopin)", artist: "Romântico & Nostálgico", url: "https://upload.wikimedia.org/wikipedia/commons/3/33/Chopin_Nocturne_Op._9_No._2_by_Olga_Gurevich.mp3" }
 ];
 
