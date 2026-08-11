@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    ConfiguraÃ§Ãµes Globais & Estado da AplicaÃ§Ã£o
    ========================================================================== */
 
@@ -24,8 +24,8 @@ Amo vocÃª alÃ©m das estrelas e de qualquer linha do infinito! â¤ï¸`,
 // Tracks RomÃ¢nticas (Utiliza SoundHelix como links estÃ¡veis, e Synth procedural como Fallback)
 const tracks = [
     { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3" },
-    { id: 2, title: "GymnopÃ©die No. 1 (Erik Satie)", artist: "MelÃ¢ncÃ³lico & Suave", url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" },
-    { id: 3, title: "Nocturne Op. 9 No. 2 (Chopin)", artist: "RomÃ¢ntico & NostÃ¡lgico", url: "https://upload.wikimedia.org/wikipedia/commons/3/33/Chopin_Nocturne_Op._9_No._2_by_Olga_Gurevich.mp3" }
+    { id: 2, title: "Psiu (Liniker)", artist: "Liniker", url: "Psiu - Liniker.mp3" },
+    { id: 3, title: "Pés no Chão (Delacruz)", artist: "Delacruz", url: "Pés no chão - Delacruz.mp3" }
 ];
 
 /* ==========================================================================
