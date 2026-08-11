@@ -1,16 +1,16 @@
-/* ==========================================================================
-   Configurações Globais & Estado da Aplicação
+﻿/* ==========================================================================
+   ConfiguraÃ§Ãµes Globais & Estado da AplicaÃ§Ã£o
    ========================================================================== */
 
 const state = {
     theme: 'theme-blush',
     fromName: 'Bruno Santos Santana',
-    toName: 'Maria Eduarda De Oliveira Gonçalves',
+    toName: 'Maria Eduarda De Oliveira GonÃ§alves',
     letterText: `Para o meu amor,
 
-Você é a minha linha de código favorita, a melhor parte do meu dia e a constante que dá sentido à minha vida. Ao seu lado, todos os bugs da rotina se resolvem e a minha vida ganha o design mais bonito.
+VocÃª Ã© a minha linha de cÃ³digo favorita, a melhor parte do meu dia e a constante que dÃ¡ sentido Ã  minha vida. Ao seu lado, todos os bugs da rotina se resolvem e a minha vida ganha o design mais bonito.
 
-Amo você além das estrelas e de qualquer linha do infinito! ❤️`,
+Amo vocÃª alÃ©m das estrelas e de qualquer linha do infinito! â¤ï¸`,
     customMusicUrl: '',
     isPlaying: false,
     currentTrack: 1,
@@ -21,11 +21,11 @@ Amo você além das estrelas e de qualquer linha do infinito! ❤️`,
     isScrubbing: false
 };
 
-// Tracks Românticas (Utiliza SoundHelix como links estáveis, e Synth procedural como Fallback)
+// Tracks RomÃ¢nticas (Utiliza SoundHelix como links estÃ¡veis, e Synth procedural como Fallback)
 const tracks = [
-    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "vai-baby.mp3" },
-    { id: 2, title: "Gymnopédie No. 1 (Erik Satie)", artist: "Melâncólico & Suave", url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" },
-    { id: 3, title: "Nocturne Op. 9 No. 2 (Chopin)", artist: "Romântico & Nostálgico", url: "https://upload.wikimedia.org/wikipedia/commons/3/33/Chopin_Nocturne_Op._9_No._2_by_Olga_Gurevich.mp3" }
+    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3" },
+    { id: 2, title: "GymnopÃ©die No. 1 (Erik Satie)", artist: "MelÃ¢ncÃ³lico & Suave", url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" },
+    { id: 3, title: "Nocturne Op. 9 No. 2 (Chopin)", artist: "RomÃ¢ntico & NostÃ¡lgico", url: "https://upload.wikimedia.org/wikipedia/commons/3/33/Chopin_Nocturne_Op._9_No._2_by_Olga_Gurevich.mp3" }
 ];
 
 /* ==========================================================================
@@ -73,7 +73,7 @@ function getAllPolaroids() {
 
 function savePolaroid(polaroid) {
     return new Promise((resolve, reject) => {
-        if (!state.db) return reject("DB não inicializado");
+        if (!state.db) return reject("DB nÃ£o inicializado");
         const transaction = state.db.transaction([STORE_NAME], 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
         const request = store.put(polaroid);
@@ -85,7 +85,7 @@ function savePolaroid(polaroid) {
 
 function deletePolaroidFromDB(id) {
     return new Promise((resolve, reject) => {
-        if (!state.db) return reject("DB não inicializado");
+        if (!state.db) return reject("DB nÃ£o inicializado");
         const transaction = state.db.transaction([STORE_NAME], 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
         const request = store.delete(id);
@@ -97,7 +97,7 @@ function deletePolaroidFromDB(id) {
 
 function clearAllPolaroidsFromDB() {
     return new Promise((resolve, reject) => {
-        if (!state.db) return reject("DB não inicializado");
+        if (!state.db) return reject("DB nÃ£o inicializado");
         const transaction = state.db.transaction([STORE_NAME], 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
         const request = store.clear();
@@ -108,7 +108,7 @@ function clearAllPolaroidsFromDB() {
 }
 
 /* ==========================================================================
-   Física de Partículas (Canvas Canvas-based Heart Rain)
+   FÃ­sica de PartÃ­culas (Canvas Canvas-based Heart Rain)
    ========================================================================== */
 
 const canvas = document.getElementById('particles-canvas');
@@ -122,7 +122,7 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-const particleEmojis = ['❤️', '💖', '🌸', '✨', '🎈', '💕', '🌹'];
+const particleEmojis = ['â¤ï¸', 'ðŸ’–', 'ðŸŒ¸', 'âœ¨', 'ðŸŽˆ', 'ðŸ’•', 'ðŸŒ¹'];
 
 class Particle {
     constructor(x, y, isBurst = false) {
@@ -130,7 +130,7 @@ class Particle {
         this.y = y;
         this.size = Math.random() * 15 + 10;
         
-        // Se for uma explosão, vai pra todas as direções. Se não, flutua suavemente para cima.
+        // Se for uma explosÃ£o, vai pra todas as direÃ§Ãµes. Se nÃ£o, flutua suavemente para cima.
         if (isBurst) {
             const angle = Math.random() * Math.PI * 2;
             const speed = Math.random() * 8 + 3;
@@ -179,7 +179,7 @@ function spawnBurst(x, y) {
 function handleParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Pequena probabilidade de flutuar corações normais no fundo constantemente
+    // Pequena probabilidade de flutuar coraÃ§Ãµes normais no fundo constantemente
     if (Math.random() < 0.05 && particlesArray.length < 150) {
         particlesArray.push(new Particle(Math.random() * canvas.width, canvas.height + 20, false));
     }
@@ -197,9 +197,9 @@ function handleParticles() {
 }
 requestAnimationFrame(handleParticles);
 
-// Adiciona partículas ao clicar na tela
+// Adiciona partÃ­culas ao clicar na tela
 window.addEventListener('click', (e) => {
-    // Apenas se não clicar em botões/inputs
+    // Apenas se nÃ£o clicar em botÃµes/inputs
     if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && !e.target.closest('.polaroid-item') && !e.target.closest('.config-drawer')) {
         for (let i = 0; i < 5; i++) {
             particlesArray.push(new Particle(e.clientX, e.clientY, true));
@@ -208,7 +208,7 @@ window.addEventListener('click', (e) => {
 });
 
 /* ==========================================================================
-   Lógica do Envelope
+   LÃ³gica do Envelope
    ========================================================================== */
 
 const envelope = document.getElementById('envelope');
@@ -222,15 +222,15 @@ waxSeal.addEventListener('click', (e) => {
     envelope.classList.add('open');
     instructionText.style.opacity = '0';
     
-    // Explosão de corações
+    // ExplosÃ£o de coraÃ§Ãµes
     const rect = waxSeal.getBoundingClientRect();
     spawnBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
     
-    // Tocar música
+    // Tocar mÃºsica
     initAudio();
     togglePlayState(true);
 
-    // Espera a animação do papel subir e depois exibe o cartão principal
+    // Espera a animaÃ§Ã£o do papel subir e depois exibe o cartÃ£o principal
     setTimeout(() => {
         document.getElementById('envelope-scene').style.opacity = '0';
         document.getElementById('envelope-scene').style.transform = 'scale(0.9)';
@@ -239,7 +239,7 @@ waxSeal.addEventListener('click', (e) => {
             document.getElementById('envelope-scene').style.display = 'none';
             loveCard.style.display = 'flex';
             
-            // Renderiza polaroids salvas após abrir
+            // Renderiza polaroids salvas apÃ³s abrir
             renderAllPolaroids();
         }, 500);
     }, 1200);
@@ -262,7 +262,7 @@ tabButtons.forEach(btn => {
         btn.classList.add('active');
         document.getElementById(targetTab).classList.add('active');
 
-        // Reinicia posições das polaroids se for para a aba galeria (garante posicionamento correto)
+        // Reinicia posiÃ§Ãµes das polaroids se for para a aba galeria (garante posicionamento correto)
         if (targetTab === 'tab-gallery') {
             adjustPolaroidPositions();
         }
@@ -270,7 +270,7 @@ tabButtons.forEach(btn => {
 });
 
 /* ==========================================================================
-   Trilha Sonora & Player de Música (Procedural Audio + HTML5 Audio)
+   Trilha Sonora & Player de MÃºsica (Procedural Audio + HTML5 Audio)
    ========================================================================== */
 
 const bgAudio = document.getElementById('bg-audio');
@@ -289,11 +289,11 @@ const trackOptions = document.querySelectorAll('.track-option');
 const prevTrackBtn = document.getElementById('prev-track');
 const nextTrackBtn = document.getElementById('next-track');
 
-// Web Audio API Synthesizer (Fallback de Segurança Romântico)
+// Web Audio API Synthesizer (Fallback de SeguranÃ§a RomÃ¢ntico)
 let audioCtx = null;
 let synthInterval = null;
 let currentSynthNote = 0;
-// Progressão de acordes melancólicos: Am - Dm9 - Fmaj7 - E7
+// ProgressÃ£o de acordes melancÃ³licos: Am - Dm9 - Fmaj7 - E7
 const chords = [
     [220.00, 261.63, 329.63, 392.00], // Am7 (A3, C4, E4, G4)
     [146.83, 174.61, 220.00, 261.63], // Dm9 (D3, F3, A3, C4)
@@ -322,7 +322,7 @@ function initAudio() {
         timeTotal.textContent = formatTime(bgAudio.duration);
     });
 
-    // Avança para próxima faixa quando terminar
+    // AvanÃ§a para prÃ³xima faixa quando terminar
     bgAudio.addEventListener('ended', () => {
         changeTrack(1);
     });
@@ -333,7 +333,7 @@ function initAudio() {
 function playSynthFallback() {
     if (synthInterval) clearInterval(synthInterval);
     
-    // Inicializa Web Audio API se necessário
+    // Inicializa Web Audio API se necessÃ¡rio
     if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -345,13 +345,13 @@ function playSynthFallback() {
     state.synthFallbackActive = true;
     let chordIndex = 0;
 
-    // Função para tocar uma nota suave do sintetizador
+    // FunÃ§Ã£o para tocar uma nota suave do sintetizador
     function playNote(freq, startTime, duration) {
         const osc = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
         const filter = audioCtx.createBiquadFilter();
 
-        osc.type = 'sine'; // Som senoidal extremamente suave e melancólico
+        osc.type = 'sine'; // Som senoidal extremamente suave e melancÃ³lico
         osc.frequency.setValueAtTime(freq, startTime);
         
         filter.type = 'lowpass';
@@ -370,7 +370,7 @@ function playSynthFallback() {
         osc.stop(startTime + duration);
     }
 
-    // Loop de reprodução dos acordes românticos procedurais
+    // Loop de reproduÃ§Ã£o dos acordes romÃ¢nticos procedurais
     function playChordLoop() {
         const now = audioCtx.currentTime;
         const duration = 2.8;
@@ -381,7 +381,7 @@ function playSynthFallback() {
             playNote(freq, now + idx * 0.08, duration - idx * 0.08);
         });
 
-        // Alterna entre uma melodia aguda aleatória na escala de dó maior pentatônica
+        // Alterna entre uma melodia aguda aleatÃ³ria na escala de dÃ³ maior pentatÃ´nica
         const melodyScale = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50]; // C5, D5, E5, G5, A5, C6
         if (Math.random() > 0.3) {
             const mFreq = melodyScale[Math.floor(Math.random() * melodyScale.length)];
@@ -401,7 +401,7 @@ function playSynthFallback() {
     // Mock progress bar
     let mockPercent = 0;
     progressSlider.value = 0;
-    timeTotal.textContent = "∞";
+    timeTotal.textContent = "âˆž";
 }
 
 function stopSynthFallback() {
@@ -418,7 +418,7 @@ function loadTrack(trackId) {
         track = {
             id: 'custom',
             title: "Sua Trilha Sonora",
-            artist: "Música Personalizada",
+            artist: "MÃºsica Personalizada",
             url: state.customMusicUrl
         };
     } else {
@@ -454,7 +454,7 @@ function togglePlayState(shouldPlay) {
     if (state.isPlaying) {
         initAudio();
         
-        // Tenta tocar o áudio do HTML5
+        // Tenta tocar o Ã¡udio do HTML5
         bgAudio.play()
             .then(() => {
                 state.synthFallbackActive = false;
@@ -504,7 +504,7 @@ function changeTrack(direction) {
     }
 }
 
-// Event Listeners do Player de Música
+// Event Listeners do Player de MÃºsica
 playPauseBtn.addEventListener('click', () => togglePlayState());
 quickMusicBtn.addEventListener('click', () => togglePlayState());
 
@@ -524,7 +524,7 @@ volumeSlider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
     bgAudio.volume = val;
     
-    // Atualiza ícone
+    // Atualiza Ã­cone
     if (val === 0) volumeIcon.className = 'fa-solid fa-volume-xmark';
     else if (val < 0.4) volumeIcon.className = 'fa-solid fa-volume-low';
     else volumeIcon.className = 'fa-solid fa-volume-high';
@@ -584,7 +584,7 @@ let itemStartY = 0;
 function setupPolaroidEvents(item, polaroidData) {
     // 1. Arrastar com Mouse & Touch
     item.addEventListener('pointerdown', (e) => {
-        // Se clicar em botões internos ou legenda focada, não inicia drag
+        // Se clicar em botÃµes internos ou legenda focada, nÃ£o inicia drag
         if (e.target.closest('.polaroid-actions') || e.target.closest('.caption-text') || e.target.tagName === 'INPUT') {
             return;
         }
@@ -600,11 +600,11 @@ function setupPolaroidEvents(item, polaroidData) {
         const rect = item.getBoundingClientRect();
         const tableRect = polaroidTable.getBoundingClientRect();
         
-        // Posição inicial do cursor
+        // PosiÃ§Ã£o inicial do cursor
         dragStartX = e.clientX;
         dragStartY = e.clientY;
         
-        // Posição inicial do item em relação à mesa (.polaroid-table)
+        // PosiÃ§Ã£o inicial do item em relaÃ§Ã£o Ã  mesa (.polaroid-table)
         itemStartX = rect.left - tableRect.left;
         itemStartY = rect.top - tableRect.top;
         
@@ -629,11 +629,11 @@ function setupPolaroidEvents(item, polaroidData) {
         const maxX = tableRect.width - itemRect.width;
         const maxY = tableRect.height - itemRect.height;
         
-        // Restrição opcional de bordas
+        // RestriÃ§Ã£o opcional de bordas
         newX = Math.max(0, Math.min(newX, maxX));
         newY = Math.max(0, Math.min(newY, maxY));
 
-        // Converte para porcentagem para manter posições proporcionais no resize
+        // Converte para porcentagem para manter posiÃ§Ãµes proporcionais no resize
         const pctX = (newX / tableRect.width) * 100;
         const pctY = (newY / tableRect.height) * 100;
 
@@ -650,7 +650,7 @@ function setupPolaroidEvents(item, polaroidData) {
         item.style.cursor = 'grab';
         item.releasePointerCapture(e.pointerId);
 
-        // Salva novas posições X/Y no IndexedDB
+        // Salva novas posiÃ§Ãµes X/Y no IndexedDB
         savePolaroid(polaroidData);
     });
 
@@ -662,7 +662,7 @@ function setupPolaroidEvents(item, polaroidData) {
         zoomModal.style.display = 'flex';
     });
 
-    // 3. Edição de Legenda em Tempo Real (In-place edit)
+    // 3. EdiÃ§Ã£o de Legenda em Tempo Real (In-place edit)
     const captionEl = item.querySelector('.caption-text');
     captionEl.addEventListener('blur', () => {
         const text = captionEl.textContent.trim();
@@ -678,7 +678,7 @@ function setupPolaroidEvents(item, polaroidData) {
         }
     });
 
-    // 4. Edição de data ao clicar na data ou no botão de calendário
+    // 4. EdiÃ§Ã£o de data ao clicar na data ou no botÃ£o de calendÃ¡rio
     const dateEl = item.querySelector('.polaroid-date');
     const dateBtn = item.querySelector('.p-act-btn.date-edit-btn');
     
@@ -690,7 +690,7 @@ function setupPolaroidEvents(item, polaroidData) {
         dateInput.value = polaroidData.date;
         dateInput.className = 'date-editor';
         
-        // Estilos visuais para garantir que o input apareça de forma limpa sobre a Polaroid
+        // Estilos visuais para garantir que o input apareÃ§a de forma limpa sobre a Polaroid
         dateInput.style.position = 'absolute';
         dateInput.style.bottom = '2px';
         dateInput.style.left = '5px';
@@ -708,7 +708,7 @@ function setupPolaroidEvents(item, polaroidData) {
         item.appendChild(dateInput);
         dateInput.focus();
 
-        // Método padrão moderno do HTML5 para abrir o pop-up do calendário diretamente
+        // MÃ©todo padrÃ£o moderno do HTML5 para abrir o pop-up do calendÃ¡rio diretamente
         if (typeof dateInput.showPicker === 'function') {
             try {
                 dateInput.showPicker();
@@ -741,7 +741,7 @@ function setupPolaroidEvents(item, polaroidData) {
         });
     }
 
-    // 5. Botões de ação rápida (Deletar)
+    // 5. BotÃµes de aÃ§Ã£o rÃ¡pida (Deletar)
     const delBtn = item.querySelector('.p-act-btn.delete');
     delBtn.addEventListener('click', async (e) => {
         e.stopPropagation();
@@ -752,7 +752,7 @@ function setupPolaroidEvents(item, polaroidData) {
         }
     });
 
-    // 6. Botão de Foco rápido (Celulares que não tem dblclick fácil)
+    // 6. BotÃ£o de Foco rÃ¡pido (Celulares que nÃ£o tem dblclick fÃ¡cil)
     const zoomBtn = item.querySelector('.p-act-btn.focus');
     zoomBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -768,14 +768,14 @@ async function checkEmptyGallery() {
         const polaroids = await getAllPolaroids();
         const muralLoaded = localStorage.getItem("mural_loaded");
         
-        // Se ainda não carregou o mural.json nesta origem/navegador, força o carregamento das fotos do usuário
+        // Se ainda nÃ£o carregou o mural.json nesta origem/navegador, forÃ§a o carregamento das fotos do usuÃ¡rio
         if (muralLoaded !== "true") {
             try {
                 const res = await fetch('mural.json');
                 if (res.ok) {
                     const parsedData = await res.json();
                     if (parsedData && Array.isArray(parsedData.polaroids) && parsedData.polaroids.length > 0) {
-                        // Limpa o banco para remover qualquer imagem default/resíduo
+                        // Limpa o banco para remover qualquer imagem default/resÃ­duo
                         await clearAllPolaroidsFromDB();
                         
                         for (const p of parsedData.polaroids) {
@@ -789,17 +789,17 @@ async function checkEmptyGallery() {
                     }
                 }
             } catch (err) {
-                console.log("mural.json não encontrado ou erro ao importar. Usando ilustração padrão:", err);
+                console.log("mural.json nÃ£o encontrado ou erro ao importar. Usando ilustraÃ§Ã£o padrÃ£o:", err);
             }
         }
         
-        // Fallback: Se o banco estiver zerado (e sem mural.json), mostra mensagem vazia e carrega ilustração padrão
+        // Fallback: Se o banco estiver zerado (e sem mural.json), mostra mensagem vazia e carrega ilustraÃ§Ã£o padrÃ£o
         if (polaroids.length === 0) {
             emptyGalleryMsg.style.display = 'block';
             
             fetch('default-photo.png')
                 .then(res => {
-                    if (!res.ok) throw new Error("Sem foto padrão");
+                    if (!res.ok) throw new Error("Sem foto padrÃ£o");
                     return res.blob();
                 })
                 .then(blob => {
@@ -808,7 +808,7 @@ async function checkEmptyGallery() {
                         const base64data = reader.result;
                         const defaultPolaroid = {
                             image: base64data,
-                            caption: "Nós Dois ❤️",
+                            caption: "NÃ³s Dois â¤ï¸",
                             date: new Date().toISOString().split('T')[0],
                             x: 35,
                             y: 25,
@@ -823,7 +823,7 @@ async function checkEmptyGallery() {
                     reader.readAsDataURL(blob);
                 })
                 .catch(err => {
-                    console.log("Foto padrão indisponível ou offline:", err);
+                    console.log("Foto padrÃ£o indisponÃ­vel ou offline:", err);
                 });
         } else {
             emptyGalleryMsg.style.display = 'none';
@@ -850,7 +850,7 @@ function createPolaroidElement(data) {
             <button class="p-act-btn delete" title="Deletar"><i class="fa-solid fa-trash"></i></button>
         </div>
         <div class="polaroid-img-wrapper">
-            <img src="${data.image}" alt="Lembrança">
+            <img src="${data.image}" alt="LembranÃ§a">
         </div>
         <div class="polaroid-caption">
             <span class="caption-text" contenteditable="true">${data.caption}</span>
@@ -883,7 +883,7 @@ async function renderAllPolaroids() {
     }
 }
 
-// Mantém polaroids dentro do quadrado visível no resize
+// MantÃ©m polaroids dentro do quadrado visÃ­vel no resize
 function adjustPolaroidPositions() {
     const items = polaroidTable.querySelectorAll('.polaroid-item');
     const tableRect = polaroidTable.getBoundingClientRect();
@@ -917,7 +917,7 @@ uploadPhotoInput.addEventListener('change', (e) => {
     reader.onload = async (event) => {
         const imgDataUrl = event.target.result;
         
-        // Define posições aleatórias centralizadas
+        // Define posiÃ§Ãµes aleatÃ³rias centralizadas
         const randX = Math.random() * 40 + 20; // 20% a 60%
         const randY = Math.random() * 40 + 20;
         const randRotate = Math.random() * 24 - 12; // -12deg a 12deg
@@ -961,7 +961,7 @@ zoomModal.addEventListener('click', (e) => {
 });
 
 /* ==========================================================================
-   Exportação e Importação de Backup (.love)
+   ExportaÃ§Ã£o e ImportaÃ§Ã£o de Backup (.love)
    ========================================================================== */
 
 const exportBtn = document.getElementById('export-btn');
@@ -1001,10 +1001,10 @@ importPhotoInput.addEventListener('change', (e) => {
         try {
             const parsedData = JSON.parse(event.target.result);
             if (parsedData.app !== 'ValentineCardApp' || !Array.isArray(parsedData.polaroids)) {
-                throw new Error("Formato de arquivo inválido. Deve ser um backup .love válido.");
+                throw new Error("Formato de arquivo invÃ¡lido. Deve ser um backup .love vÃ¡lido.");
             }
 
-            if (confirm("Ao importar, suas fotos atuais na galeria deste navegador serão substituídas. Continuar?")) {
+            if (confirm("Ao importar, suas fotos atuais na galeria deste navegador serÃ£o substituÃ­das. Continuar?")) {
                 await clearAllPolaroidsFromDB();
                 
                 // Insere as novas no DB
@@ -1015,7 +1015,7 @@ importPhotoInput.addEventListener('change', (e) => {
                 }
 
                 await renderAllPolaroids();
-                alert("Mural de fotos importado com sucesso! 🎉");
+                alert("Mural de fotos importado com sucesso! ðŸŽ‰");
             }
         } catch (err) {
             alert("Erro ao ler o arquivo de amor: " + err.message);
@@ -1028,7 +1028,7 @@ importPhotoInput.addEventListener('change', (e) => {
 
 
 /* ==========================================================================
-   Configurações Dinâmicas & Gaveta de Personalização
+   ConfiguraÃ§Ãµes DinÃ¢micas & Gaveta de PersonalizaÃ§Ã£o
    ========================================================================== */
 
 const configBtn = document.getElementById('config-btn');
@@ -1049,7 +1049,7 @@ const textCartaCompleta = document.getElementById('customized-letter-text');
 const previewFrom = document.getElementById('preview-from');
 const previewTo = document.getElementById('preview-to');
 
-// Preenche dados padrão no formulário
+// Preenche dados padrÃ£o no formulÃ¡rio
 inputLetterText.value = state.letterText;
 if (inputMusicUrl) inputMusicUrl.value = state.customMusicUrl;
 
@@ -1069,9 +1069,9 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Escuta alterações de texto e atualiza o DOM em tempo real
+// Escuta alteraÃ§Ãµes de texto e atualiza o DOM em tempo real
 inputFrom.addEventListener('input', (e) => {
-    state.fromName = e.target.value || 'Você';
+    state.fromName = e.target.value || 'VocÃª';
     textRemetente.forEach(el => el.textContent = state.fromName);
     previewFrom.textContent = state.fromName;
 });
@@ -1137,16 +1137,16 @@ generateLinkBtn.addEventListener('click', () => {
     };
 
     try {
-        // Converte pra string de JSON -> Escapa caracteres especiais de português -> Base64
+        // Converte pra string de JSON -> Escapa caracteres especiais de portuguÃªs -> Base64
         const jsonStr = JSON.stringify(configToSave);
         const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
         
         // Cria link completo com hash
         const shareUrl = `${window.location.origin}${window.location.pathname}#amor=${encoded}`;
         
-        // Copia para Área de Transferência
+        // Copia para Ãrea de TransferÃªncia
         navigator.clipboard.writeText(shareUrl).then(() => {
-            // Pequeno balão/feedback
+            // Pequeno balÃ£o/feedback
             const originalText = generateLinkBtn.innerHTML;
             generateLinkBtn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copiado!';
             generateLinkBtn.style.background = '#2a9d8f';
@@ -1156,11 +1156,11 @@ generateLinkBtn.addEventListener('click', () => {
                 generateLinkBtn.style.background = '';
             }, 2000);
             
-            // Lança corações festivos
+            // LanÃ§a coraÃ§Ãµes festivos
             spawnBurst(window.innerWidth / 2, window.innerHeight / 2);
         }).catch(err => {
             console.error("Falha ao copiar:", err);
-            alert("Não foi possível copiar automaticamente. Copie este link:\n" + shareUrl);
+            alert("NÃ£o foi possÃ­vel copiar automaticamente. Copie este link:\n" + shareUrl);
         });
 
     } catch (e) {
@@ -1186,7 +1186,7 @@ function loadCustomSettingsFromUrl() {
             document.body.className = '';
             document.body.classList.add(state.theme);
             
-            // Atualiza botões do Drawer
+            // Atualiza botÃµes do Drawer
             themeSelectButtons.forEach(btn => {
                 if (btn.getAttribute('data-theme') === state.theme) {
                     btn.classList.add('active');
@@ -1218,14 +1218,14 @@ function loadCustomSettingsFromUrl() {
             textCartaCompleta.innerHTML = state.letterText.replace(/\n/g, '<br>');
         }
 
-        // Aplica música customizada
+        // Aplica mÃºsica customizada
         if (decodedConfig.m) {
             state.customMusicUrl = decodedConfig.m;
             if (inputMusicUrl) inputMusicUrl.value = state.customMusicUrl;
             updateCustomTrackUi();
         }
 
-        console.log("Configurações românticas customizadas carregadas com sucesso via URL!");
+        console.log("ConfiguraÃ§Ãµes romÃ¢nticas customizadas carregadas com sucesso via URL!");
 
     } catch (e) {
         console.error("Erro ao ler hash da URL:", e);
@@ -1233,7 +1233,7 @@ function loadCustomSettingsFromUrl() {
 }
 
 /* ==========================================================================
-   Inicialização de Inicializações
+   InicializaÃ§Ã£o de InicializaÃ§Ãµes
    ========================================================================== */
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -1242,10 +1242,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         await initDB();
         checkEmptyGallery();
     } catch (e) {
-        console.warn("IndexedDB indisponível. Fotos não serão salvas após recarregar.", e);
+        console.warn("IndexedDB indisponÃ­vel. Fotos nÃ£o serÃ£o salvas apÃ³s recarregar.", e);
     }
 
-    // 2. Carrega configurações da URL se existirem
+    // 2. Carrega configuraÃ§Ãµes da URL se existirem
     loadCustomSettingsFromUrl();
 
     // 3. Aplica nomes iniciais
