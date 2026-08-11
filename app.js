@@ -1003,10 +1003,10 @@ importPhotoInput.addEventListener('change', (e) => {
         try {
             const parsedData = JSON.parse(event.target.result);
             if (parsedData.app !== 'ValentineCardApp' || !Array.isArray(parsedData.polaroids)) {
-                throw new Error("Formato de arquivo invÃ¡lido. Deve ser um backup .love vÃ¡lido.");
+                throw new Error("Formato de arquivo inválido. Deve ser um backup .love válido.");
             }
 
-            if (confirm("Ao importar, suas fotos atuais na galeria deste navegador serÃ£o substituÃ­das. Continuar?")) {
+            if (confirm("Ao importar, suas fotos atuais na galeria deste navegador serão substituídas. Continuar?")) {
                 await clearAllPolaroidsFromDB();
                 
                 // Insere as novas no DB
@@ -1017,7 +1017,7 @@ importPhotoInput.addEventListener('change', (e) => {
                 }
 
                 await renderAllPolaroids();
-                alert("Mural de fotos importado com sucesso! ðŸŽ‰");
+                alert("Mural de fotos importado com sucesso! 🎉");
             }
         } catch (err) {
             alert("Erro ao ler o arquivo de amor: " + err.message);
@@ -1030,7 +1030,7 @@ importPhotoInput.addEventListener('change', (e) => {
 
 
 /* ==========================================================================
-   ConfiguraÃ§Ãµes DinÃ¢micas & Gaveta de PersonalizaÃ§Ã£o
+   Configurações Dinâmicas & Gaveta de Personalização
    ========================================================================== */
 
 const configBtn = document.getElementById('config-btn');
@@ -1139,16 +1139,16 @@ generateLinkBtn.addEventListener('click', () => {
     };
 
     try {
-        // Converte pra string de JSON -> Escapa caracteres especiais de portuguÃªs -> Base64
+        // Converte pra string de JSON -> Escapa caracteres especiais de português -> Base64
         const jsonStr = JSON.stringify(configToSave);
         const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
         
         // Cria link completo com hash
         const shareUrl = `${window.location.origin}${window.location.pathname}#amor=${encoded}`;
         
-        // Copia para Ãrea de TransferÃªncia
+        // Copia para Área de Transferência
         navigator.clipboard.writeText(shareUrl).then(() => {
-            // Pequeno balÃ£o/feedback
+            // Pequeno balão/feedback
             const originalText = generateLinkBtn.innerHTML;
             generateLinkBtn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copiado!';
             generateLinkBtn.style.background = '#2a9d8f';
@@ -1158,11 +1158,11 @@ generateLinkBtn.addEventListener('click', () => {
                 generateLinkBtn.style.background = '';
             }, 2000);
             
-            // LanÃ§a coraÃ§Ãµes festivos
+            // Lança corações festivos
             spawnBurst(window.innerWidth / 2, window.innerHeight / 2);
         }).catch(err => {
             console.error("Falha ao copiar:", err);
-            alert("NÃ£o foi possÃ­vel copiar automaticamente. Copie este link:\n" + shareUrl);
+            alert("Não foi possível copiar automaticamente. Copie este link:\n" + shareUrl);
         });
 
     } catch (e) {
@@ -1188,7 +1188,7 @@ function loadCustomSettingsFromUrl() {
             document.body.className = '';
             document.body.classList.add(state.theme);
             
-            // Atualiza botÃµes do Drawer
+            // Atualiza botões do Drawer
             themeSelectButtons.forEach(btn => {
                 if (btn.getAttribute('data-theme') === state.theme) {
                     btn.classList.add('active');
@@ -1220,14 +1220,14 @@ function loadCustomSettingsFromUrl() {
             textCartaCompleta.innerHTML = state.letterText.replace(/\n/g, '<br>');
         }
 
-        // Aplica mÃºsica customizada
+        // Aplica música customizada
         if (decodedConfig.m) {
             state.customMusicUrl = decodedConfig.m;
             if (inputMusicUrl) inputMusicUrl.value = state.customMusicUrl;
             updateCustomTrackUi();
         }
 
-        console.log("ConfiguraÃ§Ãµes romÃ¢nticas customizadas carregadas com sucesso via URL!");
+        console.log("Configurações românticas customizadas carregadas com sucesso via URL!");
 
     } catch (e) {
         console.error("Erro ao ler hash da URL:", e);
@@ -1235,7 +1235,7 @@ function loadCustomSettingsFromUrl() {
 }
 
 /* ==========================================================================
-   InicializaÃ§Ã£o de InicializaÃ§Ãµes
+   Inicialização
    ========================================================================== */
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -1244,10 +1244,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         await initDB();
         checkEmptyGallery();
     } catch (e) {
-        console.warn("IndexedDB indisponÃ­vel. Fotos nÃ£o serÃ£o salvas apÃ³s recarregar.", e);
+        console.warn("IndexedDB indisponível. Fotos não serão salvas após recarregar.", e);
     }
 
-    // 2. Carrega configuraÃ§Ãµes da URL se existirem
+    // 2. Carrega configurações da URL se existirem
     loadCustomSettingsFromUrl();
 
     // 3. Aplica nomes iniciais
