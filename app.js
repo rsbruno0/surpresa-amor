@@ -1,16 +1,18 @@
 /* ==========================================================================
-   ConfiguraÃ§Ãµes Globais & Estado da AplicaÃ§Ã£o
+   Configurações Globais & Estado da Aplicação
    ========================================================================== */
 
 const state = {
     theme: 'theme-blush',
     fromName: 'Bruno Santos Santana',
-    toName: 'Maria Eduarda De Oliveira GonÃ§alves',
-    letterText: `Para o meu amor,
+    toName: 'Maria Eduarda De Oliveira Gonçalves',
+    letterText: `Você é a menina mais especial da minha vida, eu quero te ama para todo o sempre. Vamos fazer com que tudo que almejamos der certo para nós, eu estou torcendo muito por você, assim como torço para que a gente construa um lindo futuro juntos de de muito amor e companherismo. Quero estar ao seu lado nas sua melhores emoções e vivencias.
 
-VocÃª Ã© a minha linha de cÃ³digo favorita, a melhor parte do meu dia e a constante que dÃ¡ sentido Ã  minha vida. Ao seu lado, todos os bugs da rotina se resolvem e a minha vida ganha o design mais bonito.
+Dizem que existe amor para vida, eu creio que existe o amor que eu quero para a minha vida, assim como o amor que você quer para a sua vida, é uma escolha estar aqui e vamos lutar todos os dias para nossa escolha sempre seja ficar e acolher. Você é o amor para a minha vida e so você pode me provar isso.
 
-Amo vocÃª alÃ©m das estrelas e de qualquer linha do infinito! â¤ï¸`,
+Fiz esse Mural para que a gente possa colocar fotos de momentos nele, vamos atualizando com o passar dos anos para sempre olhar para ele e ver nossos momentos mais felizes sempre que o momento estiver difícil, um mural para nos lembrar o porque estamos aqui, lutando todos os dias contra nosso ego para que um dia sejamos a melhor versão de si para o outro.
+
+Eu te amo como nunca amei ninguém Princesa e pretendo sempre te amar ❤`,
     customMusicUrl: '',
     isPlaying: false,
     currentTrack: 1,
@@ -21,7 +23,7 @@ Amo vocÃª alÃ©m das estrelas e de qualquer linha do infinito! â¤ï¸`,
     isScrubbing: false
 };
 
-// Tracks RomÃ¢nticas (Utiliza SoundHelix como links estÃ¡veis, e Synth procedural como Fallback)
+// Tracks Românticas (Utiliza SoundHelix como links estáveis, e Synth procedural como Fallback)
 const tracks = [
     { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3?v=2" },
     { id: 2, title: "Psiu (Liniker)", artist: "Liniker", url: "Psiu - Liniker.mp3?v=2" },
@@ -73,7 +75,7 @@ function getAllPolaroids() {
 
 function savePolaroid(polaroid) {
     return new Promise((resolve, reject) => {
-        if (!state.db) return reject("DB nÃ£o inicializado");
+        if (!state.db) return reject("DB não inicializado");
         const transaction = state.db.transaction([STORE_NAME], 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
         const request = store.put(polaroid);
@@ -85,7 +87,7 @@ function savePolaroid(polaroid) {
 
 function deletePolaroidFromDB(id) {
     return new Promise((resolve, reject) => {
-        if (!state.db) return reject("DB nÃ£o inicializado");
+        if (!state.db) return reject("DB não inicializado");
         const transaction = state.db.transaction([STORE_NAME], 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
         const request = store.delete(id);
@@ -97,7 +99,7 @@ function deletePolaroidFromDB(id) {
 
 function clearAllPolaroidsFromDB() {
     return new Promise((resolve, reject) => {
-        if (!state.db) return reject("DB nÃ£o inicializado");
+        if (!state.db) return reject("DB não inicializado");
         const transaction = state.db.transaction([STORE_NAME], 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
         const request = store.clear();
@@ -108,7 +110,7 @@ function clearAllPolaroidsFromDB() {
 }
 
 /* ==========================================================================
-   FÃ­sica de PartÃ­culas (Canvas Canvas-based Heart Rain)
+   Física de Partículas (Canvas Heart Rain & Confetti Burst)
    ========================================================================== */
 
 const canvas = document.getElementById('particles-canvas');
@@ -122,15 +124,15 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-const particleEmojis = ['â¤ï¸', 'ðŸ’–', 'ðŸŒ¸', 'âœ¨', 'ðŸŽˆ', 'ðŸ’•', 'ðŸŒ¹'];
+const particleEmojis = ['❤️', '💖', '🌸', '✨', '🎈', '💕', '🌹', '💐', '💓', '💗', '💌', '🎉'];
 
 class Particle {
     constructor(x, y, isBurst = false) {
         this.x = x;
         this.y = y;
-        this.size = Math.random() * 15 + 10;
+        this.size = Math.random() * 16 + 14;
         
-        // Se for uma explosÃ£o, vai pra todas as direÃ§Ãµes. Se nÃ£o, flutua suavemente para cima.
+        // Se for uma explosão, vai pra todas as direções. Se não, flutua suavemente para cima.
         if (isBurst) {
             const angle = Math.random() * Math.PI * 2;
             const speed = Math.random() * 8 + 3;
@@ -162,7 +164,7 @@ class Particle {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.globalAlpha = this.alpha;
-        ctx.font = `${this.size}px Arial`;
+        ctx.font = `${this.size}px "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(this.emoji, 0, 0);
