@@ -684,8 +684,8 @@ body {
 .polaroid-caption {
     margin-top: 8px;
     text-align: center;
-    font-family: 'Caveat', cursive;
-    font-size: 15px;
+    font-family: 'Caveat', cursive, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    font-size: 16px;
     color: #333;
     line-height: 1.2;
     word-wrap: break-word;

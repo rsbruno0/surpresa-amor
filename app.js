@@ -768,34 +768,34 @@ function setupPolaroidEvents(item, polaroidData) {
 async function checkEmptyGallery() {
     try {
         const polaroids = await getAllPolaroids();
-        const muralLoaded = localStorage.getItem("mural_loaded");
+        const muralLoaded = localStorage.getItem("mural_loaded_v3");
         
-        // Se ainda nÃ£o carregou o mural.json nesta origem/navegador, forÃ§a o carregamento das fotos do usuÃ¡rio
+        // Se ainda não carregou o mural.json v3 nesta origem/navegador, força o recarregamento com legendas limpas
         if (muralLoaded !== "true") {
             try {
-                const res = await fetch('mural.json');
+                const res = await fetch('mural.json?v=3');
                 if (res.ok) {
                     const parsedData = await res.json();
                     if (parsedData && Array.isArray(parsedData.polaroids) && parsedData.polaroids.length > 0) {
-                        // Limpa o banco para remover qualquer imagem default/resÃ­duo
+                        // Limpa o banco para remover qualquer imagem default ou resíduo antigo com codificação incorreta
                         await clearAllPolaroidsFromDB();
                         
                         for (const p of parsedData.polaroids) {
                             delete p.id;
                             await savePolaroid(p);
                         }
-                        localStorage.setItem("mural_loaded", "true");
+                        localStorage.setItem("mural_loaded_v3", "true");
                         emptyGalleryMsg.style.display = 'none';
                         await renderAllPolaroids();
                         return;
                     }
                 }
             } catch (err) {
-                console.log("mural.json nÃ£o encontrado ou erro ao importar. Usando ilustraÃ§Ã£o padrÃ£o:", err);
+                console.log("mural.json não encontrado ou erro ao importar:", err);
             }
         }
         
-        // Fallback: Se o banco estiver zerado (e sem mural.json), mostra mensagem vazia e carrega ilustraÃ§Ã£o padrÃ£o
+        // Fallback: Se o banco estiver zerado (e sem mural.json), mostra mensagem vazia e carrega ilustração padrão
         if (polaroids.length === 0) {
             emptyGalleryMsg.style.display = 'block';
             
