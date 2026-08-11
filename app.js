@@ -23,9 +23,9 @@ Amo vocÃª alÃ©m das estrelas e de qualquer linha do infinito! â¤ï¸`,
 
 // Tracks RomÃ¢nticas (Utiliza SoundHelix como links estÃ¡veis, e Synth procedural como Fallback)
 const tracks = [
-    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3" },
-    { id: 2, title: "Psiu (Liniker)", artist: "Liniker", url: "Psiu - Liniker.mp3" },
-    { id: 3, title: "Pés no Chão (Delacruz)", artist: "Delacruz", url: "Pés no chão - Delacruz.mp3" }
+    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3?v=2" },
+    { id: 2, title: "Psiu (Liniker)", artist: "Liniker", url: "Psiu - Liniker.mp3?v=2" },
+    { id: 3, title: "Pés no Chão (Delacruz)", artist: "Delacruz", url: "Pés no chão - Delacruz.mp3?v=2" }
 ];
 
 /* ==========================================================================
