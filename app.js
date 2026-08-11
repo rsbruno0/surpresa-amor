@@ -25,9 +25,9 @@ Eu te amo como nunca amei ninguém Princesa e pretendo sempre te amar ❤`,
 
 // Tracks Românticas (Utiliza SoundHelix como links estáveis, e Synth procedural como Fallback)
 const tracks = [
-    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3?v=2" },
-    { id: 2, title: "Psiu (Liniker)", artist: "Liniker", url: "Psiu - Liniker.mp3?v=2" },
-    { id: 3, title: "Pés no Chão (Delacruz)", artist: "Delacruz", url: "Pés no chão - Delacruz.mp3?v=2" }
+    { id: 1, title: "5 Estrelas Part. II (Cartel MCs)", artist: "Cartel MCs", url: "Cartel MCs - 5 Estrelas Part. II.mp3?v=3" },
+    { id: 2, title: "Psiu (Liniker)", artist: "Liniker", url: "Psiu - Liniker.mp3?v=3" },
+    { id: 3, title: "Pés no Chão (Delacruz)", artist: "Delacruz", url: "Pés no chão - Delacruz.mp3?v=3" }
 ];
 
 /* ==========================================================================
